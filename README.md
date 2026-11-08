@@ -23,3 +23,6 @@ Télécharger le projet, puis ouvrir index.html dans un navigateur.
 Les formulaires vérifient les champs et affichent un message
 de démonstration. Ils ne créent pas de comptes et n’envoient
 pas de messages.
+## Site en ligne
+
+Visiter InfoClass : https://infoclass-six.vercel.app/

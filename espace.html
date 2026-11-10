@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My account - InfoClass</title><link rel="stylesheet" href="style.css"></head>
-<body data-page="espace">
-<header><h1>InfoClass</h1><nav aria-label="Main navigation"><a href="index.html">Sign up</a><a href="connexion.html">Sign in</a><a href="contact.html">Contact</a></nav></header>
-<main><h2>My student account</h2><p id="statut" class="statut" role="status" aria-live="polite">Checking your session…</p>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My account - InfoClass</title><link rel="stylesheet" href="style.css?v=coherent-3"></head>
+<body data-page="espace" class="inner-page">
+<header class="home-header">
+      <a class="brand" href="index.html" aria-label="InfoClass home"><span class="brand-symbol" aria-hidden="true">i<span>c</span></span>InfoClass<span class="brand-dot">.</span></a>
+      <nav aria-label="Main navigation"><a href="index.html#courses">Explore courses</a><a href="contact.html">Contact</a><a class="nav-signin" href="connexion.html">Sign in <span aria-hidden="true">↗</span></a></nav>
+    </header>
+<main class="inner-main"><div class="inner-heading"><p class="eyebrow">YOUR LEARNING SPACE</p><h1>Make room for progress.</h1><p>Your profile and course choice, all in one place.</p></div><div class="inner-layout"><aside class="inner-aside"><span class="aside-mark" aria-hidden="true">✓</span><h2>One step closer.</h2><p>Every new skill begins with a first step. Your InfoClass account keeps your course choice close at hand.</p><div class="aside-bottom"><p>Need a hand?</p><a href="contact.html">Contact us ↗</a></div></aside><section class="inner-card" aria-label="Student profile"><h2>My student account</h2><p id="statut" class="statut" role="status" aria-live="polite">Checking your session…</p>
 <section id="profil" hidden><h3>Welcome, <span id="nom-eleve"></span> !</h3><dl><dt>Email address</dt><dd id="email-eleve"></dd><dt>Selected course</dt><dd id="cours-eleve"></dd></dl></section>
-<p id="reconnexion" hidden><a href="connexion.html">Sign in again</a></p><button id="deconnexion" type="button">Sign out</button></main>
+<p id="reconnexion" hidden><a href="connexion.html">Sign in again</a></p><button id="deconnexion" type="button">Sign out</button></section></div></main><footer class="home-footer"><a class="footer-brand" href="index.html">InfoClass.</a><p>A brighter future starts with a new skill.</p><a href="contact.html">Let’s talk ↗</a></footer>
 <script src="config.js"></script><script src="script.js"></script></body></html>

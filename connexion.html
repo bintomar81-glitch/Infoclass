@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in - InfoClass</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=coherent-3">
 </head>
-<body data-page="connexion">
-    <header>
-        <h1>InfoClass</h1>
-
-        <nav>
-            <a href="index.html">Sign up</a>
-            <a href="connexion.html">Sign in</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+<body data-page="connexion" class="inner-page">
+    <header class="home-header">
+      <a class="brand" href="index.html" aria-label="InfoClass home"><span class="brand-symbol" aria-hidden="true">i<span>c</span></span>InfoClass<span class="brand-dot">.</span></a>
+      <nav aria-label="Main navigation"><a href="index.html#courses">Explore courses</a><a href="contact.html">Contact</a><a class="nav-signin" aria-current="page" href="connexion.html">Sign in <span aria-hidden="true">↗</span></a></nav>
     </header>
 
-    <main>
+    <main class="inner-main"><div class="inner-heading"><p class="eyebrow">WELCOME BACK</p><h1>Good to see you again.</h1><p>Your next step is waiting. Sign in to your student account.</p></div><div class="inner-layout"><aside class="inner-aside"><span class="aside-mark" aria-hidden="true">↗</span><h2>Keep your momentum.</h2><p>A new skill starts with a little curiosity. Pick up where you left off and make room for what comes next.</p><div class="aside-bottom"><p>New to InfoClass?</p><a href="index.html">Create your account ↗</a></div></aside><section class="inner-card" aria-label="Sign in form">
         <h2>Sign in</h2>
         <p>Enter your email address and password.</p>
 
         <form>
             <div>
                 <label for="email">Email address:</label>
-                <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required>
+                <input type="email" id="email" name="email" maxlength="254" autocomplete="email" placeholder="you@example.com" required>
             </div>
 
             <div>
@@ -39,8 +34,8 @@
             </div>
 
             <button type="submit">Sign in</button>
-        </form><p id="statut" class="statut" role="status" aria-live="polite"></p>
-    </main>
+        </form><p class="card-note">Don’t have an account? <a href="index.html">Sign up</a></p><p id="statut" class="statut" role="status" aria-live="polite"></p>
+    </section></div></main><footer class="home-footer"><a class="footer-brand" href="index.html">InfoClass.</a><p>A brighter future starts with a new skill.</p><a href="contact.html">Let’s talk ↗</a></footer>
     <script src="config.js"></script><script src="script.js"></script>
     
 </body>

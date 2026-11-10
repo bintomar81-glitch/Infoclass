@@ -4,32 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - InfoClass</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=coherent-3">
 </head>
-<body data-page="contact">
-    <header>
-        <h1>InfoClass</h1>
-
-        <nav>
-            <a href="index.html">Sign up</a>
-            <a href="connexion.html">Sign in</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+<body data-page="contact" class="inner-page">
+    <header class="home-header">
+      <a class="brand" href="index.html" aria-label="InfoClass home"><span class="brand-symbol" aria-hidden="true">i<span>c</span></span>InfoClass<span class="brand-dot">.</span></a>
+      <nav aria-label="Main navigation"><a href="index.html#courses">Explore courses</a><a href="contact.html" aria-current="page">Contact</a><a class="nav-signin" href="connexion.html">Sign in <span aria-hidden="true">↗</span></a></nav>
     </header>
 
-    <main>
+    <main class="inner-main"><div class="inner-heading"><p class="eyebrow">LET’S CONNECT</p><h1>We’re here to help.</h1><p>Questions about a course or your account? Send us a message.</p></div><div class="inner-layout"><aside class="inner-aside"><span class="aside-mark" aria-hidden="true">✦</span><h2>A question is a great place to start.</h2><p>Tell us what you need help with. Share the details in the form so we can understand your question.</p><div class="aside-bottom"><p>Looking for your next skill?</p><a href="index.html#courses">Explore our courses ↗</a></div></aside><section class="inner-card" aria-label="Contact form">
         <h2>Contact us</h2>
         <p>Have a question about our courses? Send us a message.</p>
 
         <form>
             <div>
                 <label for="nom">Full name:</label>
-                <input type="text" id="nom" name="nom" maxlength="100" autocomplete="name" required>
+                <input type="text" id="nom" name="nom" maxlength="100" autocomplete="name" placeholder="Your full name" required>
             </div>
 
             <div>
                 <label for="email">Email address:</label>
-                <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required>
+                <input type="email" id="email" name="email" maxlength="254" autocomplete="email" placeholder="you@example.com" required>
             </div>
 
             <div>
@@ -42,14 +37,14 @@
                 <textarea
                     id="message"
                     name="message"
-                    rows="5" maxlength="5000"
+                    placeholder="How can we help?" rows="5" maxlength="5000"
                     required
                 ></textarea>
             </div>
 
             <button type="submit">Send message</button>
         </form><p id="statut" class="statut" role="status" aria-live="polite"></p>
-    </main>
+    </section></div></main><footer class="home-footer"><a class="footer-brand" href="index.html">InfoClass.</a><p>A brighter future starts with a new skill.</p><a href="contact.html">Let’s talk ↗</a></footer>
     <script src="config.js"></script><script src="script.js"></script>
 </body>
 </html>

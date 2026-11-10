@@ -3,23 +3,23 @@ const config = window.INFOCLASS_CONFIG || {};
 const form = document.querySelector('form');
 const box = document.querySelector('#statut');
 const page = document.body.dataset.page;
-const courses = {'html-css':'HTML et CSS',javascript:'JavaScript',bureautique:'Bureautique'};
+const courses = {'html-css':'HTML and CSS',javascript:'JavaScript',bureautique:'Office Skills'};
 function status(message, error=false) { box.textContent=message; box.className=error?'statut erreur':'statut'; }
 async function request(path,{token,body,method='POST'}={}) {
-  if (!/^https:\/\/[^/]+\.supabase\.co$/.test(config.supabaseUrl||'') || !config.supabaseKey) throw new Error('Service non connecté : complète config.js avec les paramètres Supabase.');
+  if (!/^https:\/\/[^/]+\.supabase\.co$/.test(config.supabaseUrl||'') || !config.supabaseKey) throw new Error('The service is not connected yet. Add your Supabase settings to config.js.');
   const headers={apikey:config.supabaseKey,'Content-Type':'application/json'};
   if(token) headers.Authorization=`Bearer ${token}`;
   let response;
   try { response=await fetch(config.supabaseUrl+path,{method,headers,body:body===undefined?undefined:JSON.stringify(body),signal:AbortSignal.timeout(15000)}); }
-  catch { throw new Error('Connexion impossible. Vérifie Internet et réessaie.'); }
+  catch { throw new Error('Unable to connect. Check your internet connection and try again.'); }
   const data=await response.json().catch(()=>({}));
   if(!response.ok) {
     const code=data.error_code||data.code;
-    if(code==='invalid_credentials') throw new Error('Adresse e-mail ou mot de passe incorrect.');
-    if(code==='email_not_confirmed') throw new Error('Confirme ton adresse e-mail avec le lien reçu avant de te connecter.');
-    if(response.status===429) throw new Error('Trop de tentatives. Patiente quelques minutes.');
-    if(response.status===401) throw new Error('Session expirée. Reconnecte-toi.');
-    throw new Error('Échec de l’opération. Vérifie les champs et la configuration du service, puis réessaie.');
+    if(code==='invalid_credentials') throw new Error('Incorrect email address or password.');
+    if(code==='email_not_confirmed') throw new Error('Confirm your email address using the link in your inbox before signing in.');
+    if(response.status===429) throw new Error('Too many attempts. Please wait a few minutes.');
+    if(response.status===401) throw new Error('Your session has expired. Please sign in again.');
+    throw new Error('The operation failed. Check the form fields and service configuration, then try again.');
   }
   return data;
 }
@@ -29,23 +29,23 @@ if(form) form.addEventListener('submit',async event=>{
   if(!form.reportValidity()) return;
   const fields=Object.fromEntries(new FormData(form));
   const button=form.querySelector('button[type=submit]');
-  button.disabled=true; status('En cours…');
+  button.disabled=true; status('Please wait…');
   try {
     if(page==='inscription') {
-      if(!fields.nom.trim()) throw new Error('Indique ton nom complet.');
+      if(!fields.nom.trim()) throw new Error('Enter your full name.');
       const data=await request('/auth/v1/signup',{body:{email:fields.email.trim(),password:fields.motDePasse,data:{nom:fields.nom.trim(),cours:fields.cours}}});
       form.reset();
       if(saveSession(data)) location.assign('espace.html');
-      else status('Consulte ta boîte e-mail pour confirmer ton inscription, puis connecte-toi. Si cette adresse possède déjà un compte, utilise la page Connexion.');
+      else status('Check your inbox to confirm your registration, then sign in. If you already have an account with this email address, use the Sign in page.');
     } else if(page==='connexion') {
       const data=await request('/auth/v1/token?grant_type=password',{body:{email:fields.email.trim(),password:fields.motDePasse}});
-      if(!saveSession(data)) throw new Error('La connexion n’a pas abouti. Réessaie.');
+      if(!saveSession(data)) throw new Error('Sign-in was unsuccessful. Please try again.');
       form.reset(); location.assign('espace.html');
     } else if(page==='contact') {
       const message={nom:fields.nom.trim(),email:fields.email.trim(),sujet:fields.sujet.trim(),message:fields.message.trim()};
-      if(Object.values(message).some(v=>!v)) throw new Error('Remplis tous les champs sans utiliser uniquement des espaces.');
+      if(Object.values(message).some(v=>!v)) throw new Error('Complete every field. Fields cannot contain only spaces.');
       await request('/rest/v1/messages_contact',{body:message});
-      form.reset(); status('Ton message a bien été enregistré. Merci de nous avoir contactés !');
+      form.reset(); status('Your message has been saved. Thank you for contacting us!');
     }
   } catch(error) { status(error.message,true); }
   finally { button.disabled=false; }
@@ -62,10 +62,10 @@ if(page==='espace') {
     if(!token) return location.replace('connexion.html');
     try {
       const user=await request('/auth/v1/user',{token,method:'GET'});
-      document.querySelector('#nom-eleve').textContent=user.user_metadata?.nom||'Élève';
+      document.querySelector('#nom-eleve').textContent=user.user_metadata?.nom||'Student';
       document.querySelector('#email-eleve').textContent=user.email;
-      document.querySelector('#cours-eleve').textContent=courses[user.user_metadata?.cours]||'Aucun cours sélectionné';
-      document.querySelector('#profil').hidden=false; status('Tu es connecté à ton compte InfoClass.');
+      document.querySelector('#cours-eleve').textContent=courses[user.user_metadata?.cours]||'No course selected';
+      document.querySelector('#profil').hidden=false; status('You are signed in to your InfoClass account.');
     } catch(error) {status(error.message,true); document.querySelector('#reconnexion').hidden=false;}
   })();
 }

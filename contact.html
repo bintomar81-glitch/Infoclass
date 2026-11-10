@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,34 +11,34 @@
         <h1>InfoClass</h1>
 
         <nav>
-            <a href="index.html">Inscription</a>
-            <a href="connexion.html">Connexion</a>
+            <a href="index.html">Sign up</a>
+            <a href="connexion.html">Sign in</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <main>
-        <h2>Contacte-nous</h2>
-        <p>Une question sur nos cours ? Écris-nous.</p>
+        <h2>Contact us</h2>
+        <p>Have a question about our courses? Send us a message.</p>
 
         <form>
             <div>
-                <label for="nom">Nom complet :</label>
+                <label for="nom">Full name:</label>
                 <input type="text" id="nom" name="nom" maxlength="100" autocomplete="name" required>
             </div>
 
             <div>
-                <label for="email">Adresse e-mail :</label>
+                <label for="email">Email address:</label>
                 <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required>
             </div>
 
             <div>
-                <label for="sujet">Sujet :</label>
+                <label for="sujet">Subject:</label>
                 <input type="text" id="sujet" name="sujet" maxlength="150" required>
             </div>
 
             <div>
-                <label for="message">Ton message :</label>
+                <label for="message">Your message:</label>
                 <textarea
                     id="message"
                     name="message"
@@ -47,7 +47,7 @@
                 ></textarea>
             </div>
 
-            <button type="submit">Envoyer</button>
+            <button type="submit">Send message</button>
         </form><p id="statut" class="statut" role="status" aria-live="polite"></p>
     </main>
     <script src="config.js"></script><script src="script.js"></script>

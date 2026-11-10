@@ -78,4 +78,35 @@ button {
 
 button:hover {
     background-color: #1e3a8a;
+}.statut { line-height: 1.6; overflow-wrap: anywhere; }
+.erreur { color: #a41616; }
+button:disabled { opacity: .65; cursor: wait; }
+main { width: calc(100% - 32px); }
+dt { font-weight: bold; margin-top: 20px; }
+dd { margin: 8px 0; overflow-wrap: anywhere; }
+[hidden] { display: none !important; }
+
+/* Cartes de sélection des cours */
+body[data-page="inscription"] main { max-width: 900px; padding: 32px; }
+.choix-cours { border: 0; padding: 0; margin: 28px 0 32px; min-width: 0; }
+.choix-cours legend { font-size: 1.15rem; font-weight: 700; padding: 0; }
+.aide-cours { color: #5b6678; font-size: .95rem; margin: 8px 0 18px; }
+form .grille-cours { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; }
+.carte-cours { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin: 0; padding: 22px; border: 2px solid #e4e8ef; border-radius: 18px; cursor: pointer; background: #fff; transition: border-color .18s, background .18s, box-shadow .18s; }
+.carte-cours:hover { border-color: var(--accent); background: var(--teinte); }
+.carte-cours:has(input:checked) { border-color: var(--accent); background: var(--teinte); box-shadow: 0 5px 18px #172b4d10; }
+.carte-cours:focus-within { outline: 3px solid #2563eb; outline-offset: 4px; }
+.carte-cours input { position: absolute; top: 18px; right: 18px; width: 18px; height: 18px; padding: 0; margin: 0; accent-color: var(--accent); }
+.carte-cours input:focus { outline: none; }
+.icone-cours { width: 52px; height: 52px; display: grid; place-items: center; background: var(--teinte); color: var(--accent); border: 1px solid currentColor; border-radius: 14px; font-size: 1.3rem; font-weight: 800; }
+.titre-cours { font-size: 1.15rem; color: #182639; }
+.description-cours { font-size: .9rem; line-height: 1.65; color: #526174; font-weight: 400; }
+.niveau-cours { margin-top: auto; padding: 6px 10px; background: #ffffffb8; border-radius: 20px; color: var(--accent); font-size: .75rem; }
+.selection-cours { color: var(--accent); font-size: .78rem; visibility: hidden; }
+.carte-cours input:checked ~ .selection-cours { visibility: visible; }
+@media (max-width: 680px) {
+  form .grille-cours { grid-template-columns: 1fr; }
+  body[data-page="inscription"] main { padding: 22px; margin: 24px auto; }
+  .carte-cours { gap: 10px; }
 }
+@media (prefers-reduced-motion: reduce) { .carte-cours { transition: none; } }

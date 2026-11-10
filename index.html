@@ -6,7 +6,7 @@
     <title>Inscription - InfoClass</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="inscription">
     <header>
         <h1>InfoClass</h1>
 
@@ -21,40 +21,62 @@
         <h2>Inscris-toi à un cours</h2>
         <p>Remplis le formulaire pour commencer ton apprentissage.</p>
         <form>
+    <fieldset class="choix-cours">
+      <legend>Choisis ton cours</legend>
+      <p class="aide-cours">Clique sur la carte du cours qui t’intéresse.</p>
+      <div class="grille-cours">
+        <label class="carte-cours" style="--accent: #186755; --teinte: #edf8f3">
+          <input type="radio" name="cours" value="bureautique" required>
+          <span class="icone-cours" aria-hidden="true">▦</span>
+          <span class="titre-cours">Bureautique</span>
+          <span class="description-cours">Word, Excel et PowerPoint : crée des documents, des tableaux et des présentations.</span>
+          <span class="niveau-cours">Pour débuter</span>
+          <span class="selection-cours" aria-hidden="true">✓ Cours sélectionné</span>
+        </label>
+        <label class="carte-cours" style="--accent: #2551b2; --teinte: #eef3ff">
+          <input type="radio" name="cours" value="html-css" required>
+          <span class="icone-cours" aria-hidden="true">&lt;/&gt;</span>
+          <span class="titre-cours">HTML et CSS</span>
+          <span class="description-cours">Construis tes premières pages web et apprends à leur donner du style.</span>
+          <span class="niveau-cours">Pour débuter</span>
+          <span class="selection-cours" aria-hidden="true">✓ Cours sélectionné</span>
+        </label>
+        <label class="carte-cours" style="--accent: #8b5411; --teinte: #fff6e6">
+          <input type="radio" name="cours" value="javascript" required>
+          <span class="icone-cours" aria-hidden="true">JS</span>
+          <span class="titre-cours">JavaScript</span>
+          <span class="description-cours">Ajoute des interactions à tes pages : boutons, formulaires et animations.</span>
+          <span class="niveau-cours">Après HTML et CSS</span>
+          <span class="selection-cours" aria-hidden="true">✓ Cours sélectionné</span>
+        </label>
+      </div>
+    </fieldset>
     <div>
         <label for="nom">Nom complet :</label>
-        <input type="text" id="nom" name="nom" required>
+        <input type="text" id="nom" name="nom" maxlength="100" autocomplete="name" required>
     </div>
 
     <div>
         <label for="email">Adresse e-mail :</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required>
     </div>
-    <div>
-    <label for="cours">Choisis ton cours :</label>
-    <select id="cours" name="cours" required>
-        <option value="">Sélectionne un cours</option>
-        <option value="html-css">HTML et CSS</option>
-        <option value="javascript">JavaScript</option>
-        <option value="bureautique">Bureautique</option>
-    </select>
-</div>
+
 
 <div>
     <label for="mot-de-passe">Mot de passe :</label>
     <input
         type="password"
         id="mot-de-passe"
-        name="motDePasse"
+        name="motDePasse" autocomplete="new-password" maxlength="128"
         minlength="8"
         required
     >
 </div>
 
     <button type="submit">S’inscrire</button>
-</form>
+</form><p id="statut" class="statut" role="status" aria-live="polite"></p>
 
     </main>
-    <script src="script.js"></script>
+    <script src="config.js"></script><script src="script.js"></script>
 </body>
 </html>
